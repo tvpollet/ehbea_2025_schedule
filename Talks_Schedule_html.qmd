@@ -37,6 +37,20 @@ overview %>%
   row_spec(0, bold = TRUE, color = "white", background = "gray") %>% kable_styling(font_size = 8)
 ```
 
+# Preconference: Collaboration at Scale: Behind the Scenes of Big Team Science 
+ 
+**When**: Monday 14 April 2025, 2-3pm 
+
+**Panellists**: 
+
+- Dr Thora Bjornsdottir, ManyFaces
+- Dr Shona Duguid, ManyPrimates
+- Dr Harry Clelland, Multi100
+- Dr Amanda Rotella, Behavioural Science Forecasting Collaborative
+
+**Description**: 
+This panel will explore the how of Big Team Science in research, highlighting the successes and challenges of coordinating large-scale collaborative projects. Panellists with diverse Big Team experiences will share experiences on what worked, what didn’t, and the lessons learned from managing diverse teams across institutions, disciplines, and time zones. Whether you’re participating in a big team project, considering being a collaborator, or want to coordinate your own multi-site project, this panel will offer insights on how to organise and navigate collaborative science. 
+
 # Talk schedule
 
 ```{r echo=F, message=F, warning=F}

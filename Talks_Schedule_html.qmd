@@ -130,3 +130,7 @@ knitr::include_graphics("sponsors.png")
 # Contact
 
 [Contact the team](mailto:ehbea2025@northumbria.ac.uk)
+
+# Download programme
+
+[Download draft programme as .pdf](Talks_Schedule_pdf.pdf)

@@ -134,3 +134,7 @@ knitr::include_graphics("sponsors.png")
 # Download programme
 
 [Download draft programme as .pdf](Talks_Schedule_pdf.pdf)
+
+# Disclaimer
+
+[Disclaimer](https://tvpollet.github.io/disclaimer/)

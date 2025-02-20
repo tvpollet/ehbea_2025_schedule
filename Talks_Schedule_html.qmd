@@ -1,0 +1,132 @@
+---
+title: "Preliminary conference talk schedule"
+date: today
+format:
+  html:
+    toc: true
+    number-sections: false
+    geometry:
+      - margin=1in
+theme: cyborg
+mainfont: Roboto
+monofont: Roboto
+lang: en-UK
+---
+
+```{r echo=F, message=F, warning=F}
+library(tidyverse)
+library(knitr)
+library(readxl)
+library(kableExtra)
+options(knitr.kable.NA = "")
+```
+
+```{r echo=F}
+overview<-read_xlsx("EHBEA_2025_Programme_Schedule_V2_TP.xlsx", sheet = 2)
+```
+
+# Overview
+
+```{r echo=F}
+overview %>%
+  kbl(longtable = T, align=c('l','l','c')) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                full_width = F, 
+                position = "center") %>%
+  column_spec(1, bold = TRUE, color = "white", background = "darkgray") %>%
+  row_spec(0, bold = TRUE, color = "white", background = "gray") %>% kable_styling(font_size = 8)
+```
+
+# Talk schedule
+
+```{r echo=F, message=F, warning=F}
+comb_file<-read.csv("comb_file.csv", fileEncoding = "UTF-8")
+```
+
+```{r schedule_data, echo=F, results='asis'}
+## List of sessions
+sessions <- c("Session_1_A", "Session_1_B", "Session_2", "Session_3_A", "Session_3_B",
+              "Session_4_A", "Session_4_B", "Session_5_A", "Session_5_B", "Session_6",
+              "Session_7_A", "Session_7_B", "Session_8_A", "Session_8_B", "Session_9_A",
+              "Session_9_B", "Session_10_A", "Session_10_B", "Session_11_A", "Session_11_B",
+              "Session_12_A", "Session_12_B")
+
+# Function to generate content for each session and order
+generate_session_content <- function(session, order) {
+  session_data <- comb_file %>% filter(Sheet_Name == session & Order == order)
+
+  if (nrow(session_data) == 0) return("")
+
+  cat("### **", session_data %>% pull(Order), "**. ", session_data %>% pull(start_time_calculated), " - \"", session_data %>% pull(Title.y), "\" (ID: ", session_data %>% pull(ID), ", ", session_data %>% pull(Type), ")\n\n",
+      "**Authors** : ", session_data %>% pull(Please.list.all.authors.of.this.paper..including.yourself..in.order..in.the.form.Surname..Initials.and.separated.by.a.semicolon..For.instance...Jones..J.G...Knight.M.K...Murdock..M.O..), "\n\n",
+      "**Presenting author**: ", session_data %>% pull(First.Name), " ", session_data %>% pull(Last.Name), " (", session_data %>% pull(Affiliation), ")\n\n",
+      "**Abstract**:\n\n", session_data %>% pull(Abstract), "\n\n", sep = "")
+}
+
+# Function to generate header for each session
+generate_session_header <- function(session) {
+  session_data <- comb_file %>% filter(Sheet_Name == session) %>% slice(1)
+
+  date_time <- session_data %>% pull(cleaned_date_time_session)
+  session_title <- session_data %>% pull(Session_title)
+  location <- session_data %>% pull(location)
+
+  cat("## ", date_time, "  - ", session_title, " - ", location, "\n\n", sep = "")
+}
+
+# Function to generate chair
+generate_chair <- function(session) {
+  session_data <- comb_file %>% filter(Sheet_Name == session & Chair == "Chair")
+
+  if (nrow(session_data) == 0) return("")
+
+  cat("**Chair**: ", session_data %>% pull(First.Name), " ", session_data %>% pull(Last.Name), " (", session_data %>% pull(Affiliation), ")\n\n", "\n\n", sep = "")
+}
+
+for (session in sessions) {
+  generate_session_header(session)
+  generate_chair(session)
+  orders <- comb_file %>% filter(Sheet_Name == session) %>% pull(Order) %>% unique() %>% sort()
+  for (order in orders) {
+    generate_session_content(session, order)
+  }
+}
+```
+
+# Poster list
+
+```{r echo=FALSE}
+All_abstracts<-read.csv("Abstract_Decision_list_updates_TP.csv", fileEncoding = "UTF-8")
+Posters<- All_abstracts %>% filter(Status_new == 'Poster') %>% mutate(Order_poster = row_number())
+```
+
+```{r schedule_poster, echo=F, results='asis'}
+generate_poster_content <- function(order) {
+  session_data <- Posters %>% filter(Order_poster == order)
+
+  if (nrow(session_data) == 0) return("")
+
+  cat("### **", session_data %>% pull(Order_poster), "**. \"", session_data %>% pull(Title), "\" (ID: ", session_data %>% pull(ID), ")\n\n",
+      "**Authors** : ", session_data %>% pull(Please.list.all.authors.of.this.paper..including.yourself..in.order..in.the.form.Surname..Initials.and.separated.by.a.semicolon..For.instance...Jones..J.G...Knight.M.K...Murdock..M.O..), "\n\n",
+      "**Presenting author**: ", session_data %>% pull(First.Name), " ", session_data %>% pull(Last.Name), " (", session_data %>% pull(Affiliation), ")\n\n",
+      "**Abstract**:\n\n", session_data %>% pull(Abstract), "\n\n", sep = "")
+}
+
+# Define orders as the unique Order_poster values
+orders <- Posters %>% pull(Order_poster) %>% unique() %>% sort()
+
+for (order in orders) {
+  generate_poster_content(order)
+}
+```
+
+
+# Sponsors
+
+```{r, out.width = "600px", echo=FALSE, fig.align='center'}
+knitr::include_graphics("sponsors.png")
+```
+
+# Contact
+
+[Contact the team](mailto:ehbea2025@northumbria.ac.uk)

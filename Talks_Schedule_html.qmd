@@ -1,5 +1,5 @@
 ---
-title: "Preliminary conference talk schedule"
+title: "Preliminary Conference Schedule EHBEA 2025"
 date: today
 format:
   html:

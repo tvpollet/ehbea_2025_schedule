@@ -59,9 +59,9 @@ comb_file<-read.csv("comb_file.csv", fileEncoding = "UTF-8")
 
 ```{r schedule_data, echo=F, results='asis'}
 ## List of sessions
-sessions <- c("Session_1_A", "Session_1_B", "Session_2", "Session_3_A", "Session_3_B",
-              "Session_4_A", "Session_4_B", "Session_5_A", "Session_5_B", "Session_6",
-              "Session_7_A", "Session_7_B", "Session_8_A", "Session_8_B", "Session_9_A",
+sessions <- c("Session_1_A", "Session_1_B", "Session_2_A", "Session_2_B", "Session_3_A", "Session_3_B",
+              "Session_4_A", "Session_4_B", "Session_5", "Session_6_A", "Session_6_B",
+              "Session_7_A", "Session_7_B", "Session_8", "Session_9_A",
               "Session_9_B", "Session_10_A", "Session_10_B", "Session_11_A", "Session_11_B",
               "Session_12_A", "Session_12_B")
 
@@ -147,7 +147,7 @@ knitr::include_graphics("sponsors.png")
 
 # Download programme
 
-[Download draft programme as .pdf](Talks_Schedule_pdf.pdf)
+[Download draft programme as .pdf](EHBEA_2025_Schedule_pdf.pdf)
 
 # Disclaimer
 

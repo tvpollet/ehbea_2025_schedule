@@ -2,16 +2,21 @@
 title: "Preliminary Conference Schedule EHBEA 2025"
 date: today
 format:
-  html:
+  pdf:
+    header-includes: |
+     \usepackage{draftwatermark}
+      \SetWatermarkText{DRAFT}
+      \SetWatermarkScale{1}
     toc: true
     number-sections: false
     geometry:
       - margin=1in
-theme: cyborg
 mainfont: Roboto
 monofont: Roboto
 lang: en-UK
 ---
+
+\newpage
 
 ```{r echo=F, message=F, warning=F}
 library(tidyverse)
@@ -37,6 +42,8 @@ overview %>%
   row_spec(0, bold = TRUE, color = "white", background = "gray") %>% kable_styling(font_size = 8)
 ```
 
+\newpage
+
 # Preconference: Collaboration at Scale: Behind the Scenes of Big Team Science 
  
 **When**: Monday 14 April 2025, 2-3pm 
@@ -49,9 +56,11 @@ overview %>%
 - Dr Amanda Rotella, Behavioural Science Forecasting Collaborative
 
 **Description**: 
-This panel will explore the how of Big Team Science in research, highlighting the successes and challenges of coordinating large-scale collaborative projects. Panellists with diverse Big Team experiences will share experiences on what worked, what didn’t, and the lessons learned from managing diverse teams across institutions, disciplines, and time zones. Whether you’re participating in a big team project, considering being a collaborator, or want to coordinate your own multi-site project, this panel will offer insights on how to organise and navigate collaborative science. 
+This panel will explore the how of Big Team Science in research, highlighting the successes and challenges of coordinating large-scale collaborative projects. Panellists with diverse Big Team experiences will share experiences on what worked, what didn’t, and the lessons learned from managing diverse teams across institutions, disciplines, and time zones. Whether you’re participating in a big team project, considering being a collaborator, or want to coordinate your own multi-site project, this panel will offer insights on how to organise and navigate collaborative science.
 
 Register here: [https://tinyurl.com/RegisterTeamSciencePanel](https://tinyurl.com/RegisterTeamSciencePanel)
+
+\newpage
 
 # Plenaries
 
@@ -89,6 +98,8 @@ The idea of a naturalized state of human reproduction (‘natural fertility’) 
 
 **Abstract**:
 Human evolutionary success has been attributed to the capacity to accumulate knowledge and skills over generations via cultural transmission, but explanations for the distinctiveness of human culture remain heavily debated. Some accounts have proposed that human transmission processes may implicate cognitive capacities not available to other species, often proposing these capacities to be specialised adaptations. I will present a series of studies carried out within my research group, investigating relationships between cognitive development and behaviours associated with both acquiring and passing on social information. In most of our experimental work we have endeavoured to capture the kinds of challenges likely to be present in real world cases of cumulative cultural evolution in humans. We find that there are indeed significant cognitive challenges associated with effective accumulation of knowledge via social learning, illustrated by striking differences in performance between children from different age groups. However, the cognitive resources required may not be specific to cultural transmission, likely including general-purpose cognitive abilities as well as broader socio-cognitive skills used in other contexts such as communication, cooperation and competition. Therefore, although human cumulative culture may depend on distinctively human cognition, it should not be assumed that these abilities were selected specifically for this purpose.
+
+\newpage
 
 # Talk schedule
 
@@ -146,6 +157,8 @@ for (session in sessions) {
 }
 ```
 
+\newpage
+
 # Poster list
 
 ```{r echo=FALSE}
@@ -173,21 +186,10 @@ for (order in orders) {
 }
 ```
 
+\newpage
 
 # Sponsors
 
 ```{r, out.width = "600px", echo=FALSE, fig.align='center'}
 knitr::include_graphics("sponsors.png")
 ```
-
-# Contact
-
-[Contact the team](mailto:ehbea2025@northumbria.ac.uk)
-
-# Download programme
-
-[Download draft programme as .pdf](EHBEA_2025_Schedule_pdf.pdf)
-
-# Disclaimer
-
-[Disclaimer](https://tvpollet.github.io/disclaimer/)
